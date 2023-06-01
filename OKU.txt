@@ -55,7 +55,6 @@ E-Ticaret portalı için bir veritabanı tasarımı:
     - Açıklama
     - Fiyat
     - StokMiktarı
-    - ResimURL
 3. Kategoriler Tablosu:
     - KategoriID (Birincil anahtar)
     - KategoriAdı
