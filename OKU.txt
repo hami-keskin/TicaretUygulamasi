@@ -1,5 +1,3 @@
-# 
-
 Bu projeyi gerçekleştirmek için aşağıdaki adımları takip edebilirsiniz:
 
 1. İhtiyaç Analizi: Projenizin gereksinimlerini ve hedeflerini belirleyin. Ana panel ve yönetim paneli için detaylı bir taslak oluşturun.
