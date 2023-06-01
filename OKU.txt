@@ -52,8 +52,6 @@ E-Ticaret portalı için bir veritabanı tasarımı:
     - ÜrünID (Birincil anahtar)
     - KategoriID (Yabancı anahtar)
     - ÜrünAdı
-    - Açıklama
-    - Fiyat
     - StokMiktarı
 3. Kategoriler Tablosu:
     - KategoriID (Birincil anahtar)
