@@ -1,20 +1,20 @@
 CREATE SCHEMA TradeDatabase;
 
 CREATE TABLE `tradedatabase`.`users` (
-  `userID` VARCHAR(10) NOT NULL,
+  `userID` INT NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`userID`),
   UNIQUE INDEX `password_UNIQUE` (`password` ASC) VISIBLE);
   
   CREATE TABLE `tradedatabase`.`category` (
-  `categoryID` VARCHAR(10) NOT NULL,
+  `categoryID` INT NOT NULL,
   `categoryname` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`categoryID`));
 
 CREATE TABLE `tradedatabase`.`products` (
-  `productID` VARCHAR(10) NOT NULL,
-  `categotyID` VARCHAR(45) NULL,
+  `productID` INT NOT NULL,
+  `categotyID` INT NULL,
   `productname` VARCHAR(45) NULL,
   `stockCount` INT NULL,
   PRIMARY KEY (`productID`),
@@ -26,8 +26,8 @@ CREATE TABLE `tradedatabase`.`products` (
     ON UPDATE NO ACTION);
 
 CREATE TABLE `tradedatabase`.`orders` (
-  `orderID` VARCHAR(10) NOT NULL,
-  `userID` VARCHAR(10) NULL,
+  `orderID` INT NOT NULL,
+  `userID` INT NULL,
   `orderDate` VARCHAR(45) NULL,
   PRIMARY KEY (`orderID`),
   INDEX `userID_idx` (`userID` ASC) VISIBLE,
@@ -38,9 +38,9 @@ CREATE TABLE `tradedatabase`.`orders` (
     ON UPDATE NO ACTION);
 
 CREATE TABLE `tradedatabase`.`orderdetails` (
-  `detailID` VARCHAR(10) NOT NULL,
-  `orderID` VARCHAR(10) NULL,
-  `productID` VARCHAR(10) NULL,
+  `detailID` INT NOT NULL,
+  `orderID` INT NULL,
+  `productID` INT NULL,
   `amount` INT NOT NULL,
   PRIMARY KEY (`detailID`),
   INDEX `orderID_idx` (`orderID` ASC) VISIBLE,
