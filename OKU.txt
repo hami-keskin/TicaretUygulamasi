@@ -60,7 +60,6 @@ E-Ticaret portalı için bir veritabanı tasarımı:
     - SiparişID (Birincil anahtar)
     - KullanıcıID (Yabancı anahtar)
     - Tarih
-    - ToplamTutar
 5. SiparişDetayları Tablosu:
     - SiparişDetayID (Birincil anahtar)
     - SiparişID (Yabancı anahtar)
