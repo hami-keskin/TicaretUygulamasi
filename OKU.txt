@@ -48,11 +48,6 @@ E-Ticaret portalı için bir veritabanı tasarımı:
     - KullanıcıID (Birincil anahtar)
     - KullanıcıAdı
     - Şifre
-    - Ad
-    - Soyad
-    - E-posta
-    - Telefon
-    - Adres
 2. Ürünler Tablosu:
     - ÜrünID (Birincil anahtar)
     - KategoriID (Yabancı anahtar)
