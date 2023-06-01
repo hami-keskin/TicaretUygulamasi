@@ -168,49 +168,52 @@ Sepet işlemlerini gerçekleştirmek için aşağıdaki adımları takip edebili
 
 Bu adımları takip ederek, kullanıcıların ürünleri sepete ekleyebilmesi, sepeti görüntüleyebilmesi ve alışverişi tamamlayabilmesini sağlayabilirsiniz. Sepet işlemlerini gerçekleştirirken kullanıcıya bilgilendirme mesajları göndererek alışveriş deneyimini tamamlayabilirsiniz. Veritabanında sipariş bilgilerini kaydederek, ileride sipariş takibi ve yönetimi gibi işlemleri gerçekleştirebilirsiniz.
 
+Aşağıda, proje yapısındaki bileşenlerin hangilerinin bir servlet olduğunu ve hangilerinin bir paket olduğunu belirttim:
+
 - src
     - main
         - java
-            - com
-                - ticaret
-                    - controllers
-                        - AnaPanelController.java
-                        - YonetimPaneliController.java
-                    - models
-                        - Kullanici.java
-                        - Urun.java
-                        - Siparis.java
-                        - Kategori.java
-                    - util
-                        - VeritabaniUtil.java
-                    - views
-                        - anaPanel.jsp
-                        - sepet.jsp
-                        - giris.jsp
-                        - kaydol.jsp
-                        - yonetimPaneli.jsp
-                        - siparisler.jsp
-        - resources
-            - css
-                - stil.css
-            - images
-                - urun1.jpg
-                - urun2.jpg
+            - com (Paket)
+                - ticaret (Paket)
+                    - controllers (Paket)
+                        - AnaPanelController.java (Servlet)
+                        - YonetimPaneliController.java (Servlet)
+                    - models (Paket)
+                        - Kullanici.java (Paket)
+                        - Urun.java (Paket)
+                        - Siparis.java (Paket)
+                        - Kategori.java (Paket)
+                    - util (Paket)
+                        - VeritabaniUtil.java (Paket)
+                    - views (Paket)
+                        - anaPanel.jsp (JSP dosyası)
+                        - sepet.jsp (JSP dosyası)
+                        - giris.jsp (JSP dosyası)
+                        - kaydol.jsp (JSP dosyası)
+                        - yonetimPaneli.jsp (JSP dosyası)
+                        - siparisler.jsp (JSP dosyası)
+        - resources (Paket)
+            - css (Paket)
+                - stil.css (CSS dosyası)
+            - images (Paket)
+                - urun1.jpg (Resim dosyası)
+                - urun2.jpg (Resim dosyası)
         - webapp
-            - WEB-INF
-                - web.xml
-            - index.jsp
-            - sepet.jsp
-            - giris.jsp
-            - kaydol.jsp
-            - yonetimPaneli.jsp
-            - siparisler.jsp
+            - WEB-INF (Paket)
+                - web.xml (Yapılandırma dosyası)
+            - index.jsp (JSP dosyası)
+            - sepet.jsp (JSP dosyası)
+            - giris.jsp (JSP dosyası)
+            - kaydol.jsp (JSP dosyası)
+            - yonetimPaneli.jsp (JSP dosyası)
+            - siparisler.jsp (JSP dosyası)
     - test
         - java
-            - com
-                - ticaret
-                    - controllers
-                        - AnaPanelControllerTest.java
-                        - YonetimPaneliControllerTest.java
-        - resources
-- pom.xml
+            - com (Paket)
+                - ticaret (Paket)
+                    - controllers (Paket)
+                        - AnaPanelControllerTest.java (Test sınıfı)
+                        - YonetimPaneliControllerTest.java (Test sınıfı)
+        - resources (Paket)
+
+Yukarıdaki bilgileri dikkate alarak, projenin servlet'leri, model sınıfları, yardımcı sınıfları, JSP dosyaları ve diğer bileşenlerini belirleyebilirsiniz.
