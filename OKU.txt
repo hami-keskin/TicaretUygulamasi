@@ -1,0 +1,216 @@
+# 
+
+Bu projeyi gerçekleştirmek için aşağıdaki adımları takip edebilirsiniz:
+
+1. İhtiyaç Analizi: Projenizin gereksinimlerini ve hedeflerini belirleyin. Ana panel ve yönetim paneli için detaylı bir taslak oluşturun.
+2. Veritabanı Tasarımı: MySQL veritabanı kullanmanız önerildiği için, veritabanı tablolarını ve ilişkilerini tasarlayın. Ürünler, kullanıcılar, siparişler ve diğer ilgili veriler için tablolar oluşturun.
+3. Kullanıcı Arayüzü Tasarımı: Temel tasarımı aldıktan sonra, kullanıcı arayüzünü oluşturun. Ana panel için kategorileri gösteren bir akordiyon menü ve ürün listelemesi ekleyin. Sepet işlemleri için gerekli butonlar ve işlevlerin olduğu bir sepet sayfası tasarlayın.
+4. Yönetim Paneli Tasarımı: Yönetim paneli için kullanıcı adı ve şifre ile giriş yapılabilen bir sayfa oluşturun. Son yapılan siparişleri listeleme ve tarih aralığına göre sipariş filtreleme işlevlerini ekleyin. Kategori ve ürün tanımlama özelliklerini sağlayan bir arayüz tasarlayın.
+5. Veritabanı İşlemleri: Java Server Pages (JSP) ve MVC mimarisi kullanarak, veritabanı işlemlerini gerçekleştirin. Ürünleri yönetim paneli üzerinden tanımlayın ve stok bilgilerini güncelleyin.
+6. Kullanıcı İşlemleri: Kullanıcıların üye olmaları ve sisteme giriş yapmaları için gerekli formları oluşturun. Kullanıcı bilgilerini veritabanına kaydedin ve giriş işlemlerini kontrol edin. Kullanıcıların profil bilgilerini düzenleyebilmeleri için bir sayfa tasarlayın.
+7. Sepet İşlemleri: Kullanıcıların ürünleri sepete ekleyebilmesi, sepeti görüntüleyebilmesi ve alışverişi tamamlayabilmesi için gerekli işlevleri gerçekleştirin. Siparişleri veritabanına kaydedin ve kullanıcıya bilgilendirme mesajı gönderin.
+
+1. Test ve Hata Düzeltme: Oluşturduğunuz sistemi test edin ve hataları düzeltin. Kullanıcı deneyimini iyileştirmek için gerekli düzenlemeleri yapın.
+
+Bu adımları takip ederek E-Ticaret portalınızı tasarlayabilir ve geliştirebilirsiniz. İhtiyaçlarınıza ve tercihlerinize göre detayları özelleştirebilirsiniz.
+
+E-Ticaret portalı için yapılacak ihtiyaç analizi:
+
+1. Ana Panel İhtiyaçları:
+    - Kullanıcıların ana sayfada kategorilere tıklayarak ürünleri görüntüleyebilmesi.
+    - Ürünlerin görselleri, isimleri, fiyatları ve açıklamalarının listelenmesi.
+    - Sepete ürün ekleyebilme ve sepeti görüntüleme işlevi.
+    - Alışverişi tamamlayabilme ve ödeme sistemi olmadığı için alışverişi tamamlandı kabul ederek sepetin boşaltılması.
+    - Kullanıcıların üye olma, giriş yapma ve profil bilgilerini düzenleme işlevleri.
+2. Yönetim Paneli İhtiyaçları:
+    - Kullanıcı adı ve şifre ile giriş yapabilme.
+    - Son yapılan siparişlerin listelenmesi.
+    - Tarih aralığına göre siparişlerin filtrelenip listelenmesi.
+    - Kategori tanımlama ve yönetme işlevleri.
+    - Ürün tanımlama, düzenleme ve stok bilgilerini güncelleme işlevleri.
+3. Veritabanı İhtiyaçları:
+    - Kullanıcı bilgilerinin saklanacağı bir tablo.
+    - Ürünlerin bilgilerinin ve stok miktarının saklanacağı bir tablo.
+    - Siparişlerin detaylarının saklanacağı bir tablo.
+4. Kullanıcı Deneyimi İhtiyaçları:
+    - Kullanıcı dostu ve kullanımı kolay bir arayüz.
+    - Hızlı ve sorunsuz işlem yapabilme.
+    - Görsel olarak çekici bir tasarım.
+    - İşlevlerin anlaşılır ve kolay erişilebilir olması.
+5. Güvenlik İhtiyaçları:
+    - Kullanıcıların kişisel bilgilerinin güvenliği.
+    - Siparişlerin doğru ve güvenli bir şekilde kaydedilmesi.
+    - Yönetim paneline sadece yetkili kullanıcıların erişebilmesi.
+
+Bu ihtiyaç analizi, E-Ticaret portalınızın ana özelliklerini ve gereksinimlerini belirlemek için bir temel oluşturur. Projenin geri kalan aşamalarında bu ihtiyaçlara uygun şekilde tasarım ve geliştirme yapılabilir.
+
+E-Ticaret portalı için bir veritabanı tasarımı:
+
+1. Kullanıcılar Tablosu:
+    - KullanıcıID (Birincil anahtar)
+    - KullanıcıAdı
+    - Şifre
+    - Ad
+    - Soyad
+    - E-posta
+    - Telefon
+    - Adres
+2. Ürünler Tablosu:
+    - ÜrünID (Birincil anahtar)
+    - KategoriID (Yabancı anahtar)
+    - ÜrünAdı
+    - Açıklama
+    - Fiyat
+    - StokMiktarı
+    - ResimURL
+3. Kategoriler Tablosu:
+    - KategoriID (Birincil anahtar)
+    - KategoriAdı
+4. Siparişler Tablosu:
+    - SiparişID (Birincil anahtar)
+    - KullanıcıID (Yabancı anahtar)
+    - Tarih
+    - ToplamTutar
+5. SiparişDetayları Tablosu:
+    - SiparişDetayID (Birincil anahtar)
+    - SiparişID (Yabancı anahtar)
+    - ÜrünID (Yabancı anahtar)
+    - Miktar
+
+Bu veritabanı tasarımı, E-Ticaret portalının temel bileşenlerini ve ilişkilerini göstermektedir. Tablolarda belirtilen alanlar, ilgili veri türüne ve gereksinimlere göre uygun şekilde ayarlanmalıdır. Bu tasarım, kullanıcıların kaydını, ürünleri, kategorileri ve siparişleri tutmak için gerekli tabloları içermektedir. Tasarımı, veritabanı yönetim sistemine (MySQL gibi) uygun şekilde uygulayabilirsiniz.
+
+Tabii, işte kullanıcı arayüzü tasarımı:
+
+1. Ana Panel:
+    - Üst menü çubuğu: Ana sayfa, Kategoriler, Sepet, Giriş Yap, Kaydol gibi sekmeleri içerir.
+    - Sol menü: Kategorilerin listelendiği akordiyon menü.
+    - Ürün listesi: Seçilen kategoriye göre filtrelenmiş ürünlerin listelendiği bölüm.
+    - Ürün kartları: Her bir ürün için bir kart, kartta ürün resmi, adı, fiyatı ve sepete ekle butonu bulunur.
+2. Sepet Sayfası:
+    - Sepet özeti: Sepette bulunan ürünlerin listelendiği bölüm, her ürün için ürün resmi, adı, fiyatı, miktarı ve toplam fiyatı gösterilir.
+    - Miktar düzenleme: Her ürünün miktarını düzenlemek için artırma ve azaltma düğmeleri bulunur.
+    - Alışverişi Tamamla: Alışverişi tamamlamak için kullanılan buton, tıklandığında ödeme işlemi gerçekleştirilmez, sadece siparişin alındığı mesajı verilir ve kullanıcı ana sayfaya yönlendirilir.
+    - Sepeti Boşalt: Sepetteki tüm ürünleri silmek için kullanılan buton.
+
+Bu kullanıcı arayüzü tasarımı, E-Ticaret portalının ana panelindeki kategorileri ve ürünleri listelerken kullanılan akordiyon menüsünü ve ürün kartlarını içermektedir. Ayrıca, kullanıcının sepet işlemlerini gerçekleştirebileceği bir sepet sayfası da bulunmaktadır. Bu tasarımı kullanarak kullanıcı arayüzünü oluşturabilir ve gerektiğinde stil ve düzenlemeler yapabilirsiniz.
+
+Tabii, işte yönetim paneli tasarımı:
+
+1. Giriş Sayfası:
+    - Kullanıcı adı ve şifre giriş alanları.
+    - Giriş yap butonu.
+2. Ana Sayfa:
+    - Yönetim paneline hoş geldiniz mesajı.
+    - Son yapılan siparişlerin listelendiği bölüm.
+    - Tarih aralığına göre sipariş filtreleme seçenekleri.
+3. Kategori Yönetimi:
+    - Kategori ekleme formu: Yeni bir kategori oluşturmak için gerekli alanlar (kategori adı, açıklama vb.).
+    - Kategori listesi: Mevcut kategorilerin listelendiği bölüm, her bir kategori için düzenleme ve silme seçenekleri.
+4. Ürün Yönetimi:
+    - Ürün ekleme formu: Yeni bir ürün tanımlamak için gerekli alanlar (ürün adı, fiyatı, stok miktarı, resim vb.).
+    - Ürün listesi: Mevcut ürünlerin listelendiği bölüm, her bir ürün için düzenleme ve silme seçenekleri.
+
+Bu yönetim paneli tasarımı, kullanıcı adı ve şifre ile giriş yapılabilen bir sayfadan başlamakta ve yönetim panelinin ana sayfasında son yapılan siparişlerin listelendiği bir bölüm bulunmaktadır. Ayrıca, kategori ve ürün yönetimi için ayrı arayüzler tasarlanmıştır. Bu tasarımı kullanarak yönetim panelinin arayüzünü oluşturabilir ve gerektiğinde stil ve düzenlemeler yapabilirsiniz.
+
+Tabii, veritabanı işlemlerini gerçekleştirmek için aşağıdaki adımları takip edebilirsiniz:
+
+1. Bağlantı Ayarları:
+    - Veritabanına bağlanmak için gerekli JDBC sürücüsünü (örneğin, MySQL JDBC sürücüsü) projenize ekleyin.
+    - Veritabanı bağlantısı için gerekli olan host, port, veritabanı adı, kullanıcı adı ve şifre gibi bilgileri ayarlayın.
+2. Model Oluşturma:
+    - Ürünlerin veritabanındaki temsilini sağlayacak bir "Product" model sınıfı oluşturun.
+    - Model sınıfında, ürünün özelliklerini (ürün adı, fiyatı, stok miktarı vb.) ve gerekli get-set metotlarını tanımlayın.
+3. Veritabanı İşlemleri:
+    - Veritabanı işlemlerini gerçekleştirecek bir "DatabaseUtil" sınıfı oluşturun.
+    - Bu sınıf içerisinde, ürünleri veritabanına ekleme, güncelleme ve silme gibi temel işlemleri gerçekleştirecek metotları tanımlayın.
+    - JDBC bağlantısını açma, kapatma ve veritabanı işlemlerini yapma gibi gerekli yardımcı metotları da ekleyin.
+4. Kontrolör (Controller) Oluşturma:
+    - Ürün yönetim işlemlerini gerçekleştirecek bir "ProductController" sınıfı oluşturun.
+    - Bu sınıf içerisinde, kullanıcının taleplerine göre gerekli veritabanı işlemlerini çağıran metotları tanımlayın.
+    - Örneğin, yeni bir ürün eklemek için "addProduct" metodu, ürün stok bilgisini güncellemek için "updateStock" metodu gibi.
+5. JSP Sayfaları:
+    - Kullanıcı arayüzünü oluşturan JSP sayfalarında, gerekli form alanlarını ve butonları ekleyin.
+    - Form alanlarından alınan verileri uygun kontroller ile alıp ilgili kontrolöre ileten kodları yazın.
+    - Kontrolördeki metotlar aracılığıyla veritabanı işlemlerini gerçekleştirin ve sonuçları kullanıcıya bildirin.
+
+Bu adımları takip ederek, JSP ve MVC mimarisi kullanarak veritabanı işlemlerini gerçekleştirebilirsiniz. Örneğin, "ProductController" sınıfında ürün ekleme için bir metot oluşturup, bu metot içerisinde "DatabaseUtil" sınıfındaki ilgili metodu çağırarak ürünleri veritabanına ekleyebilirsiniz. Benzer şekilde, stok güncelleme işlemleri için de ilgili metotları tanımlayabilir
+
+Kullanıcı işlemlerini gerçekleştirmek için aşağıdaki adımları takip edebilirsiniz:
+
+1. Üye Olma İşlemi:
+    - Kayıt olma formunu oluşturun ve kullanıcıdan gerekli bilgileri (ad, soyad, e-posta, şifre vb.) girmesini isteyin.
+    - Form alanlarından alınan verileri uygun kontroller ile alıp kullanıcı bilgilerini temsil eden bir model sınıfına aktarın.
+    - Kullanıcının girdiği bilgileri veritabanına kaydedin. Bunun için kullanıcı modelini veritabanına ekleme işlemini gerçekleştiren bir metot kullanabilirsiniz.
+2. Giriş Yapma İşlemi:
+    - Giriş yapma formunu oluşturun ve kullanıcıdan e-posta ve şifresini girmesini isteyin.
+    - Form alanlarından alınan verileri uygun kontroller ile alıp giriş işlemini gerçekleştiren bir metodu çağırın.
+    - Giriş işlemi için kullanıcının e-posta ve şifresini veritabanında kaydedilen kullanıcı bilgileriyle karşılaştırın. Eğer doğrulama başarılıysa, kullanıcı oturumunu başlatın ve ilgili sayfaya yönlendirin. Aksi takdirde, hata mesajıyla birlikte giriş sayfasına geri dönün.
+3. Oturumu Yönetme:
+    - Kullanıcının oturumunu başlatmak için session yönetimini kullanabilirsiniz. Giriş başarılı olduğunda kullanıcının oturumunu başlatın ve kullanıcıya ait bilgileri session nesnesine kaydedin.
+    - Oturumu sonlandırmak için session nesnesini temizleyin veya geçerli oturumu sonlandıran bir işlem gerçekleştirin (örneğin, çıkış yapma butonu).
+
+Bu adımları takip ederek, kullanıcıların üye olma ve giriş yapma işlemlerini gerçekleştirebilirsiniz. Kullanıcının girdiği bilgileri veritabanına kaydederek yeni kullanıcılar oluşturabilir ve giriş yapma işlemlerinde kullanıcıyı doğrulayabilirsiniz. Oturum yönetimi için ise session nesnesini kullanarak kullanıcının oturumunu başlatıp sonlandırabilirsiniz.
+
+Sepet işlemlerini gerçekleştirmek için aşağıdaki adımları takip edebilirsiniz:
+
+1. Ürünü Sepete Ekleme:
+    - Ürünün ekleneceği bir buton veya form oluşturun.
+    - Kullanıcının sepete eklemek istediği ürünün bilgilerini (ürün ID, adı, fiyatı vb.) uygun şekilde alın.
+    - Alınan ürün bilgilerini sepete eklemek için bir metodu çağırın. Sepet, bir veritabanı tablosu veya bir geçici bellek gibi bir veri yapısı kullanılarak saklanabilir.
+2. Sepeti Görüntüleme:
+    - Sepetin içeriğini göstermek için bir sayfa tasarlayın.
+    - Kullanıcının sepetini görüntülemek için sepeti temsil eden verileri veritabanından veya uygun bir veri kaynağından alın.
+    - Sepetin içeriğini kullanıcıya gösterin.
+3. Alışverişi Tamamlama:
+    - Kullanıcıya alışverişi tamamlama seçeneği sunan bir buton veya form oluşturun.
+    - Alışverişi tamamlama işlemi gerçekleştirildiğinde, sepetin içeriğini veritabanına kaydedin ve kullanıcıya siparişin alındığına dair bir bilgilendirme mesajı gönderin.
+    - Veritabanına kaydetme işlemi için uygun bir metodu çağırın ve sipariş bilgilerini kaydedin.
+
+Bu adımları takip ederek, kullanıcıların ürünleri sepete ekleyebilmesi, sepeti görüntüleyebilmesi ve alışverişi tamamlayabilmesini sağlayabilirsiniz. Sepet işlemlerini gerçekleştirirken kullanıcıya bilgilendirme mesajları göndererek alışveriş deneyimini tamamlayabilirsiniz. Veritabanında sipariş bilgilerini kaydederek, ileride sipariş takibi ve yönetimi gibi işlemleri gerçekleştirebilirsiniz.
+
+- src
+    - main
+        - java
+            - com
+                - ticaret
+                    - controllers
+                        - AnaPanelController.java
+                        - YonetimPaneliController.java
+                    - models
+                        - Kullanici.java
+                        - Urun.java
+                        - Siparis.java
+                        - Kategori.java
+                    - util
+                        - VeritabaniUtil.java
+                    - views
+                        - anaPanel.jsp
+                        - sepet.jsp
+                        - giris.jsp
+                        - kaydol.jsp
+                        - yonetimPaneli.jsp
+                        - siparisler.jsp
+        - resources
+            - css
+                - stil.css
+            - images
+                - urun1.jpg
+                - urun2.jpg
+        - webapp
+            - WEB-INF
+                - web.xml
+            - index.jsp
+            - sepet.jsp
+            - giris.jsp
+            - kaydol.jsp
+            - yonetimPaneli.jsp
+            - siparisler.jsp
+    - test
+        - java
+            - com
+                - ticaret
+                    - controllers
+                        - AnaPanelControllerTest.java
+                        - YonetimPaneliControllerTest.java
+        - resources
+- pom.xml
