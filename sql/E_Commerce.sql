@@ -16,7 +16,7 @@ CREATE TABLE Products (
     ProductID INT PRIMARY KEY AUTO_INCREMENT,
     CategoryID INT,
     ProductName VARCHAR(255) NOT NULL,
-    StockQuantity INT,
+    StockQuantity INT NOT NULL,
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE OrderDetails (
     OrderDetailID INT PRIMARY KEY AUTO_INCREMENT,
     OrderID INT,
     ProductID INT,
-    Quantity INT,
+    Quantity INT NOT NULL,
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
