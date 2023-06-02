@@ -11,7 +11,7 @@ import java.util.List;
 import net.javaguides.usermanagement.model.User;
 
 public class UserDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?user=root&serverTimezone=Europe/Istanbul";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/e_commerce?user=root&serverTimezone=Europe/Istanbul";
     private String jdbcUsername = "root";
     private String jdbcPassword = "HKhk61+-";
 
@@ -59,7 +59,7 @@ public class UserDAO {
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int userId = rs.getInt("UserID");
+            	int userId = rs.getInt("UserID");
                 String userName = rs.getString("UserName");
                 String password = rs.getString("Password");
                 user = new User(userId, userName, password);
@@ -77,7 +77,7 @@ public class UserDAO {
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int userId = rs.getInt("UserID");
+            	int userId = rs.getInt("UserID");
                 String userName = rs.getString("UserName");
                 String password = rs.getString("Password");
                 users.add(new User(userId, userName, password));

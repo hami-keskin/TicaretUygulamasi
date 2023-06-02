@@ -7,9 +7,9 @@ package net.javaguides.usermanagement.model;
  *
  */
 public class User {
-    protected int userID;
-    protected String userName;
-    protected String password;
+	protected int userID;
+	protected String userName;
+	protected String password;
     
     public User() {
     }

@@ -38,11 +38,11 @@
                 <tbody>
                     <c:forEach var="user" items="${listUser}">
                         <tr>
-                            <td><c:out value="${user.UserID}" /></td>
-                            <td><c:out value="${user.UserName}" /></td>
-                            <td><c:out value="${user.Password}" /></td>
-                            <td><a href="edit?id=<c:out value='${user.UserID}' />">Edit</a>      
-                                <a href="delete?id=<c:out value='${user.UserID}' />">Delete</a></td>
+                            <td><c:out value="${user.userID}" /></td>
+                            <td><c:out value="${user.userName}" /></td>
+                            <td><c:out value="${user.password}" /></td>
+                            <td><a href="edit?id=<c:out value='${user.userID}' />">Edit</a>      
+                                <a href="delete?id=<c:out value='${user.userID}' />">Delete</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -54,4 +54,3 @@
 </body>
 
 </html>
-
