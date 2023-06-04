@@ -18,10 +18,16 @@
             </ul>
         </nav>
     </header>
-    <h1>Giriş Yap</h1>
     <div class="container col-md-5">
         <div class="card">
             <div class="card-body"> 
+            <c:if test="${user != null}">
+                <form action="${pageContext.request.contextPath}/update" method="post">
+            </c:if>
+            <c:if test="${user == null}">
+                <form action="${pageContext.request.contextPath}/insert" method="post">
+            </c:if>
+            
                 <form action="login" method="post">
                     <fieldset class="form-group">
                         <label for="userName">Kullanıcı Adı:</label>
@@ -32,7 +38,7 @@
                         <input type="password" id="password" name="password" class="form-control" required><br>
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Giriş Yap</button>
-                    <a href="${pageContext.request.contextPath}/kayit-ol" class="btn btn-secondary">Kayıt Ol</a>
+                    <a href="${pageContext.request.contextPath}/insert" class="btn btn-success">Kayıt Ol</a>
                 </form>
             </div>
         </div>

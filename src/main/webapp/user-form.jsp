@@ -54,7 +54,6 @@
             </fieldset>
 
             <button type="submit" class="btn btn-success">Kaydet</button>
-            </form>
         </div>
     	</div>
 		</div>
