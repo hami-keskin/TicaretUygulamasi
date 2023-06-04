@@ -23,23 +23,19 @@ import net.javaguides.usermanagement.model.User;
 
 @WebServlet("/")
 public class UserServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private UserDAO userDAO;
-	
-	public void init() {
-		userDAO = new UserDAO();
-	}
+    private static final long serialVersionUID = 1L;
+    private UserDAO userDAO;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void init() {
+        userDAO = new UserDAO();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		doGet(request, response);
         String action = request.getServletPath();
 
         try {
             switch (action) {
-                case "/login":
-                    loginUser(request, response);
-                    break;
                 case "/register":
                     registerUser(request, response);
                     break;
@@ -52,48 +48,49 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getServletPath();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String action = request.getServletPath();
-
-		try {
-			switch (action) {
-			case "/new":
-				showNewForm(request, response);
-				break;
-			case "/insert":
-				insertUser(request, response);
-				break;
-			case "/delete":
-				deleteUser(request, response);
-				break;
-			case "/edit":
-				showEditForm(request, response);
-				break;
-			case "/update":
-				updateUser(request, response);
-				break;
-			default:
-				listUser(request, response);
-				break;
-			}
-		} catch (SQLException ex) {
-			throw new ServletException(ex);
-		}
-	}
+        try {
+            switch (action) {
+                case "/new":
+                    showNewForm(request, response);
+                    break;
+                case "/insert":
+                    insertUser(request, response);
+                    break;
+                case "/delete":
+                    deleteUser(request, response);
+                    break;
+                case "/edit":
+                    showEditForm(request, response);
+                    break;
+                case "/update":
+                    updateUser(request, response);
+                    break;
+                case "/list":
+                    listUser(request, response);
+                    break;
+                default:
+                    listUser(request, response);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+    }
 	
-	private void registerUser(HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException, IOException, SQLException {
-	    String userName = request.getParameter("userName");
-	    String password = request.getParameter("password");
+    private void registerUser(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
 
-	    User newUser = new User(userName, password);
-	    userDAO.insertUser(newUser);
+        User newUser = new User(userName, password);
+        userDAO.insertUser(newUser);
 
-	    // Redirect the user to a success page or any other desired location
-	    response.sendRedirect("registration-success.jsp");
-	}
+        listUser(request, response); // Kullanıcı listesini güncelleme işlemi
+    }
 
 
 	private void listUser(HttpServletRequest request, HttpServletResponse response)
@@ -122,7 +119,7 @@ public class UserServlet extends HttpServlet {
 
 	private void insertUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
-		String userName = request.getParameter("name");
+		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		User newUser = new User(userName, password);
 		userDAO.insertUser(newUser);
@@ -154,23 +151,6 @@ public class UserServlet extends HttpServlet {
 
 	}
 
-    private void loginUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
-
-        UserDAO userDAO = new UserDAO();
-        boolean isValidUser = userDAO.validateUser(userName, password);
-
-        if (isValidUser) {
-            // Kullanıcı doğrulandıysa ana sayfaya yönlendirme yapabilirsiniz
-            response.sendRedirect("user-list.jsp");
-        } else {
-            // Kullanıcı doğrulanamadıysa hata mesajı ile giriş sayfasına yönlendirme yapabilirsiniz
-            request.setAttribute("error", "Geçersiz kullanıcı adı veya parola");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.forward(request, response);
-        }
-    }
+   
 
 }
