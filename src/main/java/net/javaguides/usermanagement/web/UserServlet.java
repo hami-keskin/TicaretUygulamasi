@@ -49,6 +49,7 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
@@ -111,7 +112,7 @@ public class UserServlet extends HttpServlet {
 		userDAO.insertUser(newUser);
 		response.sendRedirect("list");
 	}
-
+	
 	private void updateUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int userID = Integer.parseInt(request.getParameter("id"));
@@ -122,6 +123,8 @@ public class UserServlet extends HttpServlet {
 		userDAO.updateUser(user);
 		response.sendRedirect("list");
 	}
+
+
 
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {

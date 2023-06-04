@@ -28,6 +28,7 @@
                 <form action="${pageContext.request.contextPath}/insert" method="post">
             </c:if>
 
+
             <caption>
                 <h2>
                     <c:if test="${user != null}">
