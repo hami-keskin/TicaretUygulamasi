@@ -21,14 +21,9 @@
     <div class="container col-md-5">
         <div class="card">
             <div class="card-body"> 
-            <c:if test="${user != null}">
-                <form action="${pageContext.request.contextPath}/update" method="post">
-            </c:if>
-            <c:if test="${user == null}">
-                <form action="${pageContext.request.contextPath}/insert" method="post">
-            </c:if>
+
             
-                <form action="login" method="post">
+                <form action="${pageContext.request.contextPath}/register" method="post">
                     <fieldset class="form-group">
                         <label for="userName">Kullanıcı Adı:</label>
                         <input type="text" id="userName" name="userName" class="form-control" required><br>

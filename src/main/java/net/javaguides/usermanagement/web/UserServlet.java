@@ -40,6 +40,9 @@ public class UserServlet extends HttpServlet {
                 case "/login":
                     loginUser(request, response);
                     break;
+                case "/register":
+                    registerUser(request, response);
+                    break;
                 default:
                     // Diğer case'ler...
                     break;
@@ -79,6 +82,19 @@ public class UserServlet extends HttpServlet {
 			throw new ServletException(ex);
 		}
 	}
+	
+	private void registerUser(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException, SQLException {
+	    String userName = request.getParameter("userName");
+	    String password = request.getParameter("password");
+
+	    User newUser = new User(userName, password);
+	    userDAO.insertUser(newUser);
+
+	    // Redirect the user to a success page or any other desired location
+	    response.sendRedirect("registration-success.jsp");
+	}
+
 
 	private void listUser(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
