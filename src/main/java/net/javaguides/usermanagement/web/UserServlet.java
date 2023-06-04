@@ -113,16 +113,20 @@ public class UserServlet extends HttpServlet {
 		response.sendRedirect("list");
 	}
 	
-	private void updateUser(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
-		int userID = Integer.parseInt(request.getParameter("id"));
-		String userName = request.getParameter("name");
-		String password = request.getParameter("password");
+	private void updateUser(HttpServletRequest request, HttpServletResponse response)
+	        throws SQLException, IOException {
+	    String idParam = request.getParameter("id");
+	    if (idParam != null && !idParam.isEmpty()) {
+	        int userID = Integer.parseInt(idParam);
+	        String userName = request.getParameter("name");
+	        String password = request.getParameter("password");
 
-		User user = new User(userID, userName, password);
-		userDAO.updateUser(user);
-		response.sendRedirect("list");
+	        User user = new User(userID, userName, password);
+	        userDAO.updateUser(user);
+	    }
+	    response.sendRedirect("list");
 	}
+
 
 
 
