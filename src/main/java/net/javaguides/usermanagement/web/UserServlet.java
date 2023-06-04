@@ -82,6 +82,7 @@ public class UserServlet extends HttpServlet {
 		userDAO.insertUser(newUser);
 		response.sendRedirect("list");
 	}
+
 	
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
@@ -90,7 +91,4 @@ public class UserServlet extends HttpServlet {
 		response.sendRedirect("list");
 
 	}
-
-   
-
 }
