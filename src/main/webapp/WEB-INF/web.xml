@@ -5,7 +5,7 @@
          version="2.5">
   <display-name>TicaretUygulamasi</display-name>
   <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>register.jsp</welcome-file>
   </welcome-file-list>
   <jsp-config>
     <taglib>
