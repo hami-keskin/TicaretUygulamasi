@@ -14,13 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import net.javaguides.usermanagement.dao.UserDAO;
 import net.javaguides.usermanagement.model.User;
 
-/**
- * ControllerServlet.java
- * This servlet acts as a page controller for the application, handling all
- * requests from the user.
- * @email Ramesh Fadatare
- */
-
 @WebServlet("/")
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;

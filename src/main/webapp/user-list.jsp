@@ -8,9 +8,6 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark" style="background-color: tomato">
-            <div>
-                <a href="#" class="navbar-brand">Kullanıcı Yönetim Uygulaması</a>
-            </div>
             <ul class="navbar-nav">
                 <li><a href="${pageContext.request.contextPath}/list" class="nav-link">Kullanıcılar</a></li>
             </ul>

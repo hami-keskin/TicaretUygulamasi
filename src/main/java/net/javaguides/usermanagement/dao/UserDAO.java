@@ -21,7 +21,6 @@ public class UserDAO {
     private static final String SELECT_USER_BY_ID = "SELECT * FROM Users WHERE UserID = ?";
     private static final String SELECT_ALL_USERS = "SELECT * FROM Users";
     private static final String DELETE_USERS_SQL = "DELETE FROM Users WHERE UserID = ?;";
-    private static final String UPDATE_USERS_SQL = "UPDATE Users SET UserName = ?, Password = ? WHERE UserID = ?;";
 
     public UserDAO() {
     }
@@ -96,18 +95,6 @@ public class UserDAO {
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;
-    }
-
-    public boolean updateUser(User user) throws SQLException {
-        boolean rowUpdated;
-        try (Connection connection = getConnection();
-                PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL)) {
-            statement.setString(1, user.getUserName());
-            statement.setString(2, user.getPassword());
-            statement.setInt(3, user.getUserID());
-            rowUpdated = statement.executeUpdate() > 0;
-        }
-        return rowUpdated;
     }
 
     private void printSQLException(SQLException ex) {
