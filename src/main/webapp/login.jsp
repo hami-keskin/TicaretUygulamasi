@@ -23,7 +23,7 @@
             <div class="card-body"> 
 
             
-<form action="${pageContext.request.contextPath}/register" method="post">
+<form action="${pageContext.request.contextPath}/insert" method="post">
                     <fieldset class="form-group">
                         <label for="userName">Kullanıcı Adı:</label>
                         <input type="text" id="userName" name="userName" class="form-control" required><br>

@@ -36,8 +36,8 @@ public class UserServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/register":
-                    registerUser(request, response);
+                case "/insert":
+                	insertUser(request, response);
                     break;
                 default:
                     // Diğer case'ler...
@@ -54,20 +54,11 @@ public class UserServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/new":
-                    showNewForm(request, response);
-                    break;
                 case "/insert":
                     insertUser(request, response);
                     break;
                 case "/delete":
                     deleteUser(request, response);
-                    break;
-                case "/edit":
-                    showEditForm(request, response);
-                    break;
-                case "/update":
-                    updateUser(request, response);
                     break;
                 case "/list":
                     listUser(request, response);
@@ -80,17 +71,6 @@ public class UserServlet extends HttpServlet {
             throw new ServletException(ex);
         }
     }
-	
-    private void registerUser(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
-
-        User newUser = new User(userName, password);
-        userDAO.insertUser(newUser);
-
-        listUser(request, response); // Kullanıcı listesini güncelleme işlemi
-    }
 
 
 	private void listUser(HttpServletRequest request, HttpServletResponse response)
@@ -99,22 +79,6 @@ public class UserServlet extends HttpServlet {
 		request.setAttribute("listUser", listUser);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
 		dispatcher.forward(request, response);
-	}
-
-	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
-		dispatcher.forward(request, response);
-	}
-
-	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, ServletException, IOException {
-		int userID = Integer.parseInt(request.getParameter("id"));
-		User existingUser = userDAO.selectUser(userID);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
-		request.setAttribute("user", existingUser);
-		dispatcher.forward(request, response);
-
 	}
 
 	private void insertUser(HttpServletRequest request, HttpServletResponse response) 
@@ -126,23 +90,6 @@ public class UserServlet extends HttpServlet {
 		response.sendRedirect("list");
 	}
 	
-	private void updateUser(HttpServletRequest request, HttpServletResponse response)
-	        throws SQLException, IOException {
-	    String idParam = request.getParameter("id");
-	    if (idParam != null && !idParam.isEmpty()) {
-	        int userID = Integer.parseInt(idParam);
-	        String userName = request.getParameter("name");
-	        String password = request.getParameter("password");
-
-	        User user = new User(userID, userName, password);
-	        userDAO.updateUser(user);
-	    }
-	    response.sendRedirect("list");
-	}
-
-
-
-
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int userID = Integer.parseInt(request.getParameter("id"));
