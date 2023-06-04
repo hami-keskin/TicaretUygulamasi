@@ -20,7 +20,14 @@
             <div class="card-body"> 
 
             
-<form action="${pageContext.request.contextPath}/insert" method="post">
+<script>
+    function setAction(action) {
+        var form = document.getElementById("form");
+        form.action = "${pageContext.request.contextPath}/" + action;
+    }
+</script>
+
+<form id="form" method="post">
                     <fieldset class="form-group">
                         <label for="userName">Kullanıcı Adı:</label>
                         <input type="text" id="userName" name="userName" class="form-control" required><br>
@@ -29,9 +36,10 @@
                         <label for="password">Parola:</label>
                         <input type="password" id="password" name="password" class="form-control" required><br>
                     </fieldset>
-                    <button type="submit" class="btn btn-primary">Kayıt Ol</button>
-    <a href="${pageContext.request.contextPath}/login" class="btn btn-success">Giriş Yap</a>
+                    <button type="submit" class="btn btn-primary" onclick="setAction('insert')">Kayıt Ol</button>
+    <button type="submit" class="btn btn-success" onclick="setAction('login')">Giriş Yap</button>
 </form>
+
             </div>
         </div>
     </div>

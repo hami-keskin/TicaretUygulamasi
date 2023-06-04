@@ -115,11 +115,16 @@ public class UserDAO {
     
     public boolean validateUser(String userName, String password) {
         try (Connection connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Users WHERE UserName = ? AND Password = ?")) {
+        		PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Users WHERE UserName = ? AND Password = ?");
+ {
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
-            return rs.next(); // Eğer kullanıcı bulunursa true döner, bulunmazsa false döner
+            if (rs.next()) {
+                return true; // Kullanıcı bulundu
+            } else {
+                return false; // Kullanıcı bulunamadı
+            }
         } catch (SQLException e) {
             printSQLException(e);
             return false;

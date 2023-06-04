@@ -80,24 +80,21 @@ public class UserServlet extends HttpServlet {
     
     private void loginUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
+    String userName = request.getParameter("userName");
+    String password = request.getParameter("password");
 
-        UserDAO userDAO = new UserDAO();
-        boolean isValidUser = userDAO.validateUser(userName, password);
+    boolean isValidUser = userDAO.validateUser(userName, password);
 
-        if (isValidUser) {
-            // Kullanıcı doğrulandıysa ana sayfaya yönlendirme yapabilirsiniz
-            response.sendRedirect("user-list.jsp");
-        } else {
-            // Kullanıcı doğrulanamadıysa hata mesajı ile giriş sayfasına yönlendirme yapabilirsiniz
-            request.setAttribute("error", "Geçersiz kullanıcı adı veya parola");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.forward(request, response);
-        }
+    if (isValidUser) {
+        // Kullanıcı doğrulandıysa ana sayfaya yönlendirme yapabilirsiniz
+        response.sendRedirect("user-list.jsp");
+    } else {
+        // Kullanıcı doğrulanamadıysa hata mesajı ile giriş sayfasına yönlendirme yapabilirsiniz
+        request.setAttribute("error", "Geçersiz kullanıcı adı veya parola");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+        dispatcher.forward(request, response);
     }
-
-
+}
 
 	private void listUser(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
