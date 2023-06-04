@@ -29,6 +29,9 @@ public class UserServlet extends HttpServlet {
 
         try {
             switch (action) {
+                case "/login":
+                    loginUser(request, response);
+                    break;
                 case "/insert":
                 	insertUser(request, response);
                     break;
@@ -65,6 +68,36 @@ public class UserServlet extends HttpServlet {
         }
     }
 
+    private void insertUser(HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, IOException {
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        User newUser = new User(userName, password);
+        userDAO.insertUser(newUser);
+        response.sendRedirect(request.getContextPath() + "/list");
+    }
+
+    
+    private void loginUser(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+
+        UserDAO userDAO = new UserDAO();
+        boolean isValidUser = userDAO.validateUser(userName, password);
+
+        if (isValidUser) {
+            // Kullanıcı doğrulandıysa ana sayfaya yönlendirme yapabilirsiniz
+            response.sendRedirect("user-list.jsp");
+        } else {
+            // Kullanıcı doğrulanamadıysa hata mesajı ile giriş sayfasına yönlendirme yapabilirsiniz
+            request.setAttribute("error", "Geçersiz kullanıcı adı veya parola");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+
 
 	private void listUser(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
@@ -73,16 +106,6 @@ public class UserServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
 		dispatcher.forward(request, response);
 	}
-
-	private void insertUser(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		User newUser = new User(userName, password);
-		userDAO.insertUser(newUser);
-		response.sendRedirect("list");
-	}
-
 	
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
