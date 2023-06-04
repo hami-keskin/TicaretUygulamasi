@@ -23,10 +23,14 @@
         <div class="card">
             <div class="card-body"> 
                 <form action="login" method="post">
-                    <label for="userName">Kullanıcı Adı:</label>
-                    <input type="text" id="userName" name="userName" required><br>
-                    <label for="password">Parola:</label>
-                    <input type="password" id="password" name="password" required><br>
+                    <fieldset class="form-group">
+                        <label for="userName">Kullanıcı Adı:</label>
+                        <input type="text" id="userName" name="userName" class="form-control" required><br>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="password">Parola:</label>
+                        <input type="password" id="password" name="password" class="form-control" required><br>
+                    </fieldset>
                     <button type="submit">Giriş Yap</button>
                 </form>
             </div>

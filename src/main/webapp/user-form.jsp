@@ -56,7 +56,7 @@
             <button type="submit" class="btn btn-success">Kaydet</button>
             </form>
         </div>
-    </div>
-</div>
+    	</div>
+		</div>
 </body>
 </html>
