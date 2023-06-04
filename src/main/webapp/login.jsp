@@ -31,7 +31,8 @@
                         <label for="password">Parola:</label>
                         <input type="password" id="password" name="password" class="form-control" required><br>
                     </fieldset>
-                    <button type="submit">Giriş Yap</button>
+                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                    <a href="${pageContext.request.contextPath}/kayit-ol" class="btn btn-secondary">Kayıt Ol</a>
                 </form>
             </div>
         </div>
