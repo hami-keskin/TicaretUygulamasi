@@ -87,7 +87,7 @@ public class UserServlet extends HttpServlet {
 
     if (isValidUser) {
         // Kullanıcı doğrulandıysa ana sayfaya yönlendirme yapabilirsiniz
-        response.sendRedirect("user-list.jsp");
+    	response.sendRedirect(request.getContextPath() + "/list");
     } else {
         // Kullanıcı doğrulanamadıysa hata mesajı ile giriş sayfasına yönlendirme yapabilirsiniz
         request.setAttribute("error", "Geçersiz kullanıcı adı veya parola");
