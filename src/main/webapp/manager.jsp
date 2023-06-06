@@ -51,6 +51,11 @@
         button[type="submit"]:hover {
             background-color: #0056b3;
         }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +63,12 @@
     <form method="post" action="LoginServlet">
         <label for="password">Şifre:</label>
         <input type="password" id="password" name="password" required><br>
+        <% String error = (String) request.getAttribute("error");
+           if (error != null) { %>
+           <div class="error">
+               <%= error %>
+           </div>
+        <% } %>
         <button type="submit">Giriş Yap</button>
     </form>
 </body>
