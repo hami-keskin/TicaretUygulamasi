@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Kayıt Ol</title>
+    <title>Kayıt - Giriş</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -32,6 +32,12 @@
                                 <button type="submit" class="btn btn-primary" onclick="setAction('insert')">Kayıt Ol</button>
                                 <button type="submit" class="btn btn-success" onclick="setAction('login')">Giriş Yap</button>
                             </div>
+                            <% String error = (String) request.getAttribute("error");
+                               if (error != null) { %>
+                               <div class="alert alert-danger mt-3">
+                                   <%= error %>
+                               </div>
+                            <% } %>
                         </form>
                     </div>
                 </div>
