@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 		// Şifreyi kontrol et
 		if (password.equals(PASSWORD)) {
 			// Şifre doğruysa success.jsp sayfasına yönlendir
-			response.sendRedirect("success.jsp");
+			response.sendRedirect("panel.jsp");
 		} else {
 			// Şifre yanlışsa error mesajını request özniteliğine ekle ve manager.jsp sayfasına yönlendir
 			request.setAttribute("error", "Hatalı şifre!");
