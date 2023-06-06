@@ -9,6 +9,6 @@
 <body>
     <h1>Başarısız Giriş</h1>
     <p>Girdiğiniz şifre yanlış, lütfen tekrar deneyin.</p>
-    <a href="index.jsp">Geri Dön</a>
+    <a href="manager.jsp">Geri Dön</a>
 </body>
 </html>
