@@ -26,8 +26,9 @@ public class LoginServlet extends HttpServlet {
 			// Şifre doğruysa success.jsp sayfasına yönlendir
 			response.sendRedirect("success.jsp");
 		} else {
-			// Şifre yanlışsa error.jsp sayfasına yönlendir
-			response.sendRedirect("error.jsp");
+			// Şifre yanlışsa error mesajını request özniteliğine ekle ve manager.jsp sayfasına yönlendir
+			request.setAttribute("error", "Hatalı şifre!");
+			request.getRequestDispatcher("manager.jsp").forward(request, response);
 		}
 
 	}
