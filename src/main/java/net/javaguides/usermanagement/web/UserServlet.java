@@ -91,7 +91,7 @@ public class UserServlet extends HttpServlet {
     } else {
         // Kullanıcı doğrulanamadıysa hata mesajı ile giriş sayfasına yönlendirme yapabilirsiniz
         request.setAttribute("error", "Geçersiz kullanıcı adı veya parola");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("userLogin.jsp");
         dispatcher.forward(request, response);
     }
 }
@@ -100,7 +100,7 @@ public class UserServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		List<User> listUser = userDAO.selectAllUsers();
 		request.setAttribute("listUser", listUser);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");
 		dispatcher.forward(request, response);
 	}
 	

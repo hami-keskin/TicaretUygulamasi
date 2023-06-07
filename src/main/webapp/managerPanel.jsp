@@ -52,7 +52,7 @@
         <p>Lütfen aşağıdaki butonlardan birini seçin:</p>
         <div class="button-container">
             <button class="button" onclick="window.location.href = 'siparisler.html';">Siparişler</button>
-            <button class="button" onclick="window.location.href = 'category-list.jsp';">Kategoriler</button>
+            <button class="button" onclick="window.location.href = 'categoryList.jsp';">Kategoriler</button>
             <button class="button" onclick="window.location.href = 'urunler.html';">Ürünler</button>
         </div>
     </div>
