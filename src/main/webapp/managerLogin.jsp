@@ -60,7 +60,7 @@
 </head>
 <body>
     <h1>Yönetim Girişi</h1>
-    <form method="post" action="LoginServlet">
+    <form method="post" action="ManagerLoginServlet">
         <label for="password">Şifre:</label>
         <input type="password" id="password" name="password" required><br>
         <% String error = (String) request.getAttribute("error");

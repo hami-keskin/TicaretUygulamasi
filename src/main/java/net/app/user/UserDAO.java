@@ -1,4 +1,4 @@
-package net.javaguides.usermanagement.dao;
+package net.app.user;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import net.javaguides.usermanagement.model.User;
 
 public class UserDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/e_commerce?user=root&serverTimezone=Europe/Istanbul";

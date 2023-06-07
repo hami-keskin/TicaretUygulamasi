@@ -1,4 +1,4 @@
-package net.javaguides.usermanagement.model;
+package net.app.user;
 
 public class User {
 	protected int userID;

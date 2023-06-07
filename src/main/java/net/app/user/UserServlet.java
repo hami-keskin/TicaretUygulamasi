@@ -1,4 +1,4 @@
-package net.javaguides.usermanagement.web;
+package net.app.user;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,9 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.javaguides.usermanagement.dao.UserDAO;
-import net.javaguides.usermanagement.model.User;
 
 @WebServlet("/")
 public class UserServlet extends HttpServlet {
