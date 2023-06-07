@@ -30,4 +30,14 @@
     <servlet-name>CategoryServlet</servlet-name>
     <url-pattern>/CategoryServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManagerLoginServlet</display-name>
+    <servlet-name>ManagerLoginServlet</servlet-name>
+    <servlet-class>net.app.manager.ManagerLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagerLoginServlet</servlet-name>
+    <url-pattern>/ManagerLoginServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
