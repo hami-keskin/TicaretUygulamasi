@@ -23,7 +23,7 @@ public class UserDAO {
     public UserDAO() {
     }
 
-    protected Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

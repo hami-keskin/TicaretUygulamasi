@@ -1,39 +1,87 @@
 package net.app.category;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class CategoryServlet
- */
+@WebServlet("/")
 public class CategoryServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CategoryServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    private static final long serialVersionUID = 1L;
+    private CategoryDAO categoryDAO;
+
+    public void init() {
+        categoryDAO = new CategoryDAO();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getServletPath();
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        try {
+            switch (action) {
+                case "/insert":
+                    insertCategory(request, response);
+                    break;
+                default:
+                    // Diğer case'ler...
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+    }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getServletPath();
+
+        try {
+            switch (action) {
+                case "/insert":
+                    insertCategory(request, response);
+                    break;
+                case "/delete":
+                    deleteCategory(request, response);
+                    break;
+                case "/list":
+                    listCategory(request, response);
+                    break;
+                default:
+                    listCategory(request, response);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+    }
+
+    private void insertCategory(HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, IOException {
+        String categoryName = request.getParameter("categoryName");
+        Category newCategory = new Category(categoryName);
+        categoryDAO.insertCategory(newCategory);
+        response.sendRedirect(request.getContextPath() + "/list");
+    }
+
+    private void listCategory(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List<Category> listCategory = categoryDAO.selectAllCategories();
+        request.setAttribute("listCategory", listCategory);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("categoryList.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void deleteCategory(HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, IOException {
+        int categoryID = Integer.parseInt(request.getParameter("id"));
+        categoryDAO.deleteCategory(categoryID);
+        response.sendRedirect("list");
+    }
 }
