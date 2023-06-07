@@ -8,28 +8,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.app.user.UserDAO;
-
 public class CategoryDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/e_commerce?user=root&serverTimezone=Europe/Istanbul";
     private String jdbcUsername = "root";
     private String jdbcPassword = "HKhk61+-";
 
-    private static final String INSERT_CATEGORY_SQL = "INSERT INTO Categories (CategoryID, CategoryName) VALUES (?, ?);";
+    private static final String INSERT_CATEGORY_SQL = "INSERT INTO Categories" + "  (CategoryID, CategoryName) VALUES "
+            + " (?, ?);";
+
     private static final String SELECT_CATEGORY_BY_ID = "SELECT * FROM Categories WHERE CategoryID = ?";
     private static final String SELECT_ALL_CATEGORIES = "SELECT * FROM Categories";
     private static final String DELETE_CATEGORY_SQL = "DELETE FROM Categories WHERE CategoryID = ?;";
 
-    private UserDAO userDAO = new UserDAO();
-    
     public CategoryDAO() {
-        userDAO = new UserDAO();
     }
 
     protected Connection getConnection() throws SQLException {
-        return userDAO.getConnection();
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
-
 
     public void insertCategory(Category category) throws SQLException {
         System.out.println(INSERT_CATEGORY_SQL);
