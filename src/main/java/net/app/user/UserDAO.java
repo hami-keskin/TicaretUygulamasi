@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/e_commerce?user=root&serverTimezone=Europe/Istanbul";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "HKhk61+-";
 
     private static final String INSERT_USERS_SQL = "INSERT INTO Users" + "  (UserID, UserName, Password) VALUES "
             + " (?, ?, ?);";
@@ -23,15 +20,9 @@ public class UserDAO {
     public UserDAO() {
     }
 
-    public Connection getConnection() throws SQLException {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return connection;
+    protected Connection getConnection() throws SQLException {
+        ConnectionManager connectionManager = new ConnectionManager();
+        return connectionManager.getConnection();
     }
 
     public void insertUser(User user) throws SQLException {
