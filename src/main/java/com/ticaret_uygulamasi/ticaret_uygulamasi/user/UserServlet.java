@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/UserServlet")
+@WebServlet("/")
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDAO userDAO;
@@ -33,7 +33,7 @@ public class UserServlet extends HttpServlet {
                 case "/login":
                     loginUser(request, response);
                     break;
-                case "/insertUser":
+                case "/insert":
                 	insertUser(request, response);
                     break;
                 default:
@@ -51,7 +51,7 @@ public class UserServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/insertUser":
+                case "/insert":
                     insertUser(request, response);
                     break;
                 case "/delete":
