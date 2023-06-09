@@ -1,0 +1,10 @@
+com\ticaret_uygulamasi\ticaret_uygulamasi\category\CategoryDAO.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\user\UserServlet.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\category\Category.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\resources\JakartaEE10Resource.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\user\UserDAO.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\manager\ManagerLoginServlet.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\user\ConnectionManager.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\JakartaRestConfiguration.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\category\CategoryServlet.class
+com\ticaret_uygulamasi\ticaret_uygulamasi\user\User.class

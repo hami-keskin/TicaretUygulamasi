@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
 <head>
 <title>Kategori Yönetimi Uygulaması</title>
@@ -24,7 +24,7 @@
     <div class="container col-md-5">
         <div class="card">
             <div class="card-body">
-                <form action="insert" method="post">
+                <form action="insertCategory" method="post">
 
                     <caption>
                         <h2>Kategori Ekle</h2>
