@@ -16,7 +16,7 @@
         <div class="card-header text-center"></div>
         <div class="card-body">
             <div class="text-center">
-                <a href="page1.jsp" class="btn btn-primary">Button 1</a>
+                <a href="listProduct.jsp" class="btn btn-primary">Product List</a>
                 <a href="page2.jsp" class="btn btn-primary">Button 2</a>
                 <a href="page3.jsp" class="btn btn-primary">Button 3</a>
             </div>
