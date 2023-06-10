@@ -7,6 +7,7 @@ cn\techtutorial\servlet\AddToCartServlet.class
 cn\techtutorial\servlet\QuantityIncDecServlet.class
 cn\techtutorial\servlet\CancelOrderServlet.class
 cn\techtutorial\connection\DbCon.class
+cn\techtutorial\servlet\RegisterServlet.class
 cn\techtutorial\servlet\RemoveFromCartServlet.class
 cn\techtutorial\servlet\LoginServlet.class
 cn\techtutorial\model\Product.class
