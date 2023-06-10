@@ -13,5 +13,6 @@ D:\Users\khami\eclipse-workspace\app\src\cn\techtutorial\connection\DbCon.java
 D:\Users\khami\eclipse-workspace\app\src\cn\techtutorial\servlet\QuantityIncDecServlet.java
 D:\Users\khami\eclipse-workspace\app\src\cn\techtutorial\servlet\RegisterServlet.java
 D:\Users\khami\eclipse-workspace\app\src\cn\techtutorial\servlet\AddToCartServlet.java
+D:\Users\khami\eclipse-workspace\app\src\cn\techtutorial\servlet\ManagerLoginServlet.java
 D:\Users\khami\eclipse-workspace\app\src\cn\techtutorial\model\Cart.java
 D:\Users\khami\eclipse-workspace\app\src\cn\techtutorial\servlet\OrderNowServlet.java

@@ -12,6 +12,7 @@ cn\techtutorial\servlet\RemoveFromCartServlet.class
 cn\techtutorial\servlet\LoginServlet.class
 cn\techtutorial\model\Product.class
 cn\techtutorial\dao\ProductDao.class
+cn\techtutorial\servlet\ManagerLoginServlet.class
 cn\techtutorial\servlet\OrderNowServlet.class
 cn\techtutorial\servlet\CheckOutServlet.class
 cn\techtutorial\model\Order.class
