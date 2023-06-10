@@ -41,7 +41,7 @@ public class AddProductServlet extends HttpServlet {
 
             if (addSuccessful) {
                 // Redirect to a success page or display a success message
-                response.sendRedirect("success.jsp");
+                response.sendRedirect("listProduct.jsp");
             } else {
                 // Redirect to an error page or display an error message
                 response.sendRedirect("error.jsp");

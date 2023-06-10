@@ -11,6 +11,7 @@ import cn.techtutorial.model.Cart;
 import cn.techtutorial.model.Product;
 
 public class ProductDao {
+
     private Connection con;
 
     private String query;
@@ -138,4 +139,22 @@ public class ProductDao {
         }
         return addSuccessful;
     }
+
+    public boolean deleteProduct(int id) {
+        boolean deleteSuccessful = false;
+        try {
+            query = "DELETE FROM products WHERE id=?";
+            pst = this.con.prepareStatement(query);
+            pst.setInt(1, id);
+
+            int rowsAffected = pst.executeUpdate();
+
+            deleteSuccessful = (rowsAffected > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return deleteSuccessful;
+    }
+
 }

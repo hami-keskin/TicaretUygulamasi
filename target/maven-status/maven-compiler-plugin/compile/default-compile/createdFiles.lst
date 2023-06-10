@@ -10,6 +10,7 @@ cn\techtutorial\connection\DbCon.class
 cn\techtutorial\servlet\AddProductServlet.class
 cn\techtutorial\servlet\RegisterServlet.class
 cn\techtutorial\servlet\RemoveFromCartServlet.class
+cn\techtutorial\servlet\DeleteProductServlet.class
 cn\techtutorial\servlet\LoginServlet.class
 cn\techtutorial\model\Product.class
 cn\techtutorial\dao\ProductDao.class

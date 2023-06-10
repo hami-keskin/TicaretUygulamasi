@@ -49,7 +49,10 @@ if (cart_list != null) {
                                 <h6 class="category">Category: <%=p.getCategory() %></h6>
                                 <div class="mt-3 d-flex justify-content-between">
                                     <a class="btn btn-primary" href="edit-product?id=<%=p.getId()%>">Edit</a>
-                                    <a class="btn btn-danger" href="delete-product?id=<%=p.getId()%>">Delete</a>
+                                    <form method="post" action="delete-product">
+                                        <input type="hidden" name="id" value="<%=p.getId()%>">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
