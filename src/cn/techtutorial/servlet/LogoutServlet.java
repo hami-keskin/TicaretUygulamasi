@@ -19,11 +19,11 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
-			if(request.getSession().getAttribute("auth")!=null) {
-				request.getSession().removeAttribute("auth");
-				response.sendRedirect("login.jsp");
+			if(request.getSession().getAttribute("auth")!=null) { // Oturumda "auth" özniteliği varsa
+				request.getSession().removeAttribute("auth"); // "auth" özniteliğini oturumdan kaldır
+				response.sendRedirect("login.jsp"); // login.jsp sayfasına yönlendir
 			}else {
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("index.jsp"); // "auth" özniteliği yoksa index.jsp sayfasına yönlendir
 			}
 
 		} 
