@@ -22,17 +22,17 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
-			String email = request.getParameter("login-email");
-			String password = request.getParameter("login-password");
+			String email = request.getParameter("login-email"); // İstek parametrelerinden e-posta adresini al
+			String password = request.getParameter("login-password"); // İstek parametrelerinden şifreyi al
 
-			UserDao udao = new UserDao(DbCon.getConnection());
-			User user = udao.userLogin(email, password);
+			UserDao udao = new UserDao(DbCon.getConnection()); // UserDao nesnesi oluştur ve veritabanı bağlantısını geç
+			User user = udao.userLogin(email, password); // Kullanıcı girişini doğrula ve kullanıcıyı al
 			if (user != null) {
-				request.getSession().setAttribute("auth", user);
+				request.getSession().setAttribute("auth", user); // Oturuma kullanıcıyı ata
 //				System.out.print("user logged in");
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("index.jsp"); // index.jsp sayfasına yönlendir
 			} else {
-				out.println("there is no user");
+				out.println("there is no user"); // Kullanıcı bulunamazsa hata mesajını göster
 			}
 
 		} catch (ClassNotFoundException|SQLException e) {
