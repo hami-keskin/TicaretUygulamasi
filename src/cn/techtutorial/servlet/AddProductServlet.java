@@ -22,33 +22,33 @@ public class AddProductServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try {
-            // Retrieve the product information from the request parameters
+            // İstek parametrelerinden ürün bilgisini al
             String name = request.getParameter("name");
             String category = request.getParameter("category");
             double price = Double.parseDouble(request.getParameter("price"));
             String image = request.getParameter("image");
 
-            // Create a new Product object with the provided information
+            // Sağlanan bilgilerle yeni bir Product nesnesi oluştur
             Product product = new Product();
             product.setName(name);
             product.setCategory(category);
             product.setPrice(price);
             product.setImage(image);
 
-            // Create a ProductDao and add the product
+            // Bir ProductDao oluştur ve ürünü ekle
             ProductDao productDao = new ProductDao(DbCon.getConnection());
             boolean addSuccessful = productDao.addProduct(product);
 
             if (addSuccessful) {
-                // Redirect to a success page or display a success message
+                // Başarı sayfasına yönlendir veya başarı mesajını görüntüle
                 response.sendRedirect("listProduct.jsp");
             } else {
-                // Redirect to an error page or display an error message
+                // Hata sayfasına yönlendir veya hata mesajını görüntüle
                 response.sendRedirect("error.jsp");
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            // Redirect to an error page or display an error message
+            // Hata sayfasına yönlendir veya hata mesajını görüntüle
             response.sendRedirect("error.jsp");
         }
     }
