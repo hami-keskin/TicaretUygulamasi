@@ -19,23 +19,23 @@ public class DeleteProductServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            // Retrieve the product ID from the request parameters
+            // İstek parametrelerinden ürün ID'sini al
             int productId = Integer.parseInt(request.getParameter("id"));
 
-            // Create a ProductDao and delete the product
+            // ProductDao nesnesi oluştur ve ürünü sil
             ProductDao productDao = new ProductDao(DbCon.getConnection());
             boolean deleteSuccessful = productDao.deleteProduct(productId);
 
             if (deleteSuccessful) {
-                // Redirect to the product list page or show a success message
+                // Ürün listesi sayfasına yönlendir veya başarı mesajını görüntüle
                 response.sendRedirect("listProduct.jsp");
             } else {
-                // Handle the failure case (e.g., show an error message)
-                response.getWriter().println("Failed to delete product.");
+                // Başarısızlık durumunda (örneğin, bir hata mesajı gösterme)
+                response.getWriter().println("Ürün silme başarısız oldu.");
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            // Redirect to an error page or display an error message
+            // Hata sayfasına yönlendir veya hata mesajını görüntüle
             response.sendRedirect("error.jsp");
         }
     }
