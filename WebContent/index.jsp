@@ -13,7 +13,7 @@ ProductDao pd = new ProductDao(DbCon.getConnection());
 List<Product> products = pd.getAllProducts();
 ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
 if (cart_list != null) {
-	request.setAttribute("cart_list", cart_list);
+    request.setAttribute("cart_list", cart_list);
 }
 %>
 <!DOCTYPE html>
@@ -56,13 +56,13 @@ if (cart_list != null) {
             <!-- Sidebar -->
             <div class="col-md-3 my-3">
                 <div class="sidebar">
-                    <!-- Sidebar content -->
-                    <h4>Categories</h4>
+                    <!-- Sidebar içeriği -->
+                    <h4>Kategoriler</h4>
                     <ul>
                         <% 
                         Map<String, List<Product>> categoryMap = new HashMap<>();
 
-                        // Group products by category
+                        // Ürünleri kategoriye göre grupla
                         for (Product p : products) {
                             String category = p.getCategory();
                             if (!categoryMap.containsKey(category)) {
@@ -71,7 +71,7 @@ if (cart_list != null) {
                             categoryMap.get(category).add(p);
                         }
 
-                        // Display categories in the sidebar
+                        // Kategorileri yan menüde göster
                         for (Map.Entry<String, List<Product>> entry : categoryMap.entrySet()) {
                             String category = entry.getKey();
                             List<Product> productList = entry.getValue();
@@ -90,7 +90,7 @@ if (cart_list != null) {
             </div>
             
             <div class="col-md-9">
-                <div class="card-header my-3">All Products</div>
+                <div class="card-header my-3">Tüm Ürünler</div>
                 <div class="row">
                     <% 
                     String selectedCategory = request.getParameter("category");
@@ -105,11 +105,11 @@ if (cart_list != null) {
                                 alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title"><%=p.getName() %></h5>
-                                <h6 class="price">Price: $<%=p.getPrice() %></h6>
-                                <h6 class="category">Category: <%=p.getCategory() %></h6>
+                                <h6 class="price">Fiyat: $<%=p.getPrice() %></h6>
+                                <h6 class="category">Kategori: <%=p.getCategory() %></h6>
                                 <div class="mt-3 d-flex justify-content-between">
-                                    <a class="btn btn-dark" href="add-to-cart?id=<%=p.getId()%>">Add to Cart</a>
-                                    <a class="btn btn-primary" href="order-now?quantity=1&id=<%=p.getId()%>">Buy Now</a>
+                                    <a class="btn btn-dark" href="add-to-cart?id=<%=p.getId()%>">Sepete Ekle</a>
+                                    <a class="btn btn-primary" href="order-now?quantity=1&id=<%=p.getId()%>">Hemen Satın Al</a>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,7 @@ if (cart_list != null) {
                     } else { 
                     %>
                     <div class="col-md-12">
-                        <p>There are no products.</p>
+                        <p>Hiç ürün bulunmamaktadır.</p>
                     </div>
                     <% 
                     } 
@@ -133,10 +133,3 @@ if (cart_list != null) {
     <%@include file="/includes/footer.jsp"%>
 </body>
 </html>
-
-
-
-
-
-
-
