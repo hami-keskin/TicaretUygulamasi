@@ -13,12 +13,12 @@
 
     <div class="container">
     <div class="card w-50 mx-auto my-5">
-        <div class="card-header text-center"></div>
+        <div class="card-header text-center"><strong>Manager Panel</strong></div>
         <div class="card-body">
             <div class="text-center">
                 <a href="listProduct.jsp" class="btn btn-primary">Product List</a>
-                <a href="page2.jsp" class="btn btn-primary">Button 2</a>
-                <a href="page3.jsp" class="btn btn-primary">Button 3</a>
+                <a href="orderfollow.jsp" class="btn btn-primary">Order Follow</a>
+                <a href="page3.jsp" class="btn btn-primary">Stock's</a>
             </div>
         </div>
     </div>
